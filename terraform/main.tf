@@ -1,4 +1,13 @@
 terraform {
+  required_providers {
+    azurerm = {
+      source = "hashicorp/azurerm"
+      version = "4.6.0"
+    }
+  }
+}
+
+terraform {
   backend "azurerm" {
     resource_group_name  = "rg-dev-app-001"
     storage_account_name = "devopsdev2025"
