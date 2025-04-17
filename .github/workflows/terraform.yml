@@ -21,6 +21,16 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v2
 
+    - name: Read value from terraform.tfvars
+      run: |
+          chmod +x read_tfvars.sh
+          value=$(./read_tfvars.sh)
+          echo "Value from terraform.tfvars: $value"
+      id: read_tfvars
+ 
+    - name: Use the value
+      run: echo "Using the value:${{ steps.read_tfvars.outputs.value }}-rg"
+
     - name: Print working directory
       run: pwd
 
@@ -39,16 +49,28 @@ jobs:
       uses: azure/login@v2
       with:
         creds: ${{ secrets.AZURE_CREDENTIALS }}
-           
+
+    - name: Generate backend configuration
+      run: |
+       cat > backend.tf <<EOF
+       terraform {
+         backend "azurerm" {
+            resource_group_name ="rg-dev-app-001"
+            storage_account_name ="proddevops2025"
+            container_name ="production"
+            key ="${{ steps.read_tfvars.outputs.value }}-rg"
+           }   
+          }
+          EOF
     - name: Terraform Init
-      run: terraform init -backend-config=backend.tfvars
+      run: terraform init
       working-directory: /home/runner/work/terraform1/terraform1/terraform
 
     - name: Terraform Plan
-      run: terraform plan -var "resource_group_name=${{ github.sha }}-rg"
+      run: terraform plan -out=tfplan
       working-directory: /home/runner/work/terraform1/terraform1/terraform
 
     - name: Terraform Apply
       if: github.ref == 'refs/heads/main'
-      run: terraform apply -auto-approve -var "resource_group_name=${{ github.sha }}-rg"
+      run: terraform apply -auto-approve tfplan
       working-directory: /home/runner/work/terraform1/terraform1/terraform
