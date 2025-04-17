@@ -74,7 +74,7 @@ jobs:
           EOF
           
     - name: List files in terraform directory
-      run: ls -la /home/runner/work/terraform1/terraform1/terraform
+      run: ls -la /home/runner/work/terraform1/terraform1/.github
           
     - name: Terraform Init
       run: terraform init
