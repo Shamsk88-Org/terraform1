@@ -1,3 +1,3 @@
 locals {
-  tfstate_key = "${var.resource_name}.tfstate"
+tfstate_key = "${var.resource_group_name}.tfstate"
 }
