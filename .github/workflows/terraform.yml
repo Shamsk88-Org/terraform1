@@ -63,15 +63,11 @@ jobs:
     - name: Generate backend configuration
       run: |
        cat > /home/runner/work/terraform1/terraform1/terraform/backend.tf <<EOF
-       terraform {
-          backend "azurerm" {
             resource_group_name ="rg-dev-app-001"
             storage_account_name ="proddevops2025"
             container_name ="production"
             key ="${{ steps.read_tfvars.outputs.value }}"
-           }
-          } 
-          EOF
+            EOF
           
     - name: List files in terraform directory
       run: ls -la /home/runner/work/terraform1/terraform1/.github/workflows
