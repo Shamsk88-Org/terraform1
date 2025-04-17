@@ -73,8 +73,8 @@ jobs:
           }
           EOF
           
-    - name: Print backend configuration
-      run: cat backend.tf
+    - name: List files in terraform directory
+      run: ls -la /home/runner/work/terraform1/terraform1/terraform
           
     - name: Terraform Init
       run: terraform init
