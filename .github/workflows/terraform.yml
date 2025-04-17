@@ -45,10 +45,10 @@ jobs:
       working-directory: /home/runner/work/terraform1/terraform1/terraform
 
     - name: Terraform Plan
-      run: terraform plan -var "resource_group_name=${{ github.sha }}-rg
+      run: terraform plan -var "resource_group_name=${{ github.sha }}-rg"
       working-directory: /home/runner/work/terraform1/terraform1/terraform
 
     - name: Terraform Apply
       if: github.ref == 'refs/heads/main'
-      run: terraform apply -auto-approve -var "resource_group_name=${{ github.sha }}-rg
+      run: terraform apply -auto-approve -var "resource_group_name=${{ github.sha }}-rg"
       working-directory: /home/runner/work/terraform1/terraform1/terraform
