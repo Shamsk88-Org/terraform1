@@ -31,12 +31,13 @@ jobs:
       run: echo $GITHUB_WORKSPACE
 
     - name: Read value from terraform.tfvars
+      id: read_tfvars
       run: |
           chmod +x /home/runner/work/terraform1/terraform1/.github/workflows/read_tfvars.sh
           value=$(/home/runner/work/terraform1/terraform1/.github/workflows/read_tfvars.sh)
           echo "Value from terraform.tfvars: $value"
-      id: read_tfvars
- 
+          echo "::set-output name=value::$value"
+       
     - name: Use the value
       run: echo "Using the value:${{ steps.read_tfvars.outputs.value }}-rg"
 
