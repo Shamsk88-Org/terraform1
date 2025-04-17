@@ -39,7 +39,7 @@ jobs:
           echo "::set-output name=value::$value"
        
     - name: Use the value
-      run: echo "Using the value:${{ steps.read_tfvars.outputs.value }}-rg"
+      run: echo "Using the value:${{ steps.read_tfvars.outputs.value }}"
 
     - name: Print working directory
       run: pwd
@@ -68,7 +68,7 @@ jobs:
             resource_group_name ="rg-dev-app-001"
             storage_account_name ="proddevops2025"
             container_name ="production"
-            key ="${{ steps.read_tfvars.outputs.value }}-rg"
+            key ="${{ steps.read_tfvars.outputs.value }}"
            }   
           }
           EOF
@@ -77,7 +77,8 @@ jobs:
       run: ls -la /home/runner/work/terraform1/terraform1/.github/workflows
           
     - name: Terraform Init
-      run: terraform init
+      run: terraform init -backend-config=/home/runner/work/terraform1/terraform1/terraform/backend.tf
+
       working-directory: /home/runner/work/terraform1/terraform1/terraform
 
     - name: Terraform Plan
