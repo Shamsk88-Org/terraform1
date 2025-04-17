@@ -32,7 +32,7 @@ jobs:
 
     - name: Read value from terraform.tfvars
       run: |
-          chmod +x /home/runner/work/terraform1/.github/workflows/read_tfvars.sh
+          chmod +x /home/runner/work/terraform1/terraform1/.github/workflows/read_tfvars.sh
           value=$(./read_tfvars.sh)
           echo "Value from terraform.tfvars: $value"
       id: read_tfvars
