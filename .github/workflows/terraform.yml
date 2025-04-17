@@ -72,6 +72,10 @@ jobs:
            }   
           }
           EOF
+          
+    - name: Print backend configuration
+      run: cat backend.tf
+          
     - name: Terraform Init
       run: terraform init
       working-directory: /home/runner/work/terraform1/terraform1/terraform
