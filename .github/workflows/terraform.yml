@@ -74,7 +74,6 @@ jobs:
           
     - name: Terraform Init
       run: terraform init -backend-config=/home/runner/work/terraform1/terraform1/terraform/backend.tf
-
       working-directory: /home/runner/work/terraform1/terraform1/terraform
 
     - name: Terraform Plan
