@@ -21,6 +21,15 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v2
 
+    - name: Print working directory
+      run: pwd
+
+    - name: List files
+      run: ls -la
+
+    - name: Print GITHUB_WORKSPACE
+      run: echo $GITHUB_WORKSPACE
+
     - name: Read value from terraform.tfvars
       run: |
           chmod +x /home/runner/work/terraform1/.github/workflows/read_tfvars.sh
