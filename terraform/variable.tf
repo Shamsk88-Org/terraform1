@@ -7,7 +7,7 @@ description = "The value of the Subscription ID"
 }
 
 variable "resource_name" {
-description = "The name of the resource"
+description = "The name of the resourcegroup"
 }
 
 variable "location" {
