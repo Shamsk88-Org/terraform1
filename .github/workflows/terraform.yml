@@ -77,7 +77,7 @@ jobs:
       run: ls -la /home/runner/work/terraform1/terraform1/.github/workflows
           
     - name: Terraform Init
-        env:
+      env:
         ARM_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
         ARM_CLIENT_SECRET: ${{ secrets.AZURE_CLIENT_SECRET }}
         ARM_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
@@ -86,7 +86,7 @@ jobs:
       working-directory: /home/runner/work/terraform1/terraform1/terraform
 
     - name: Terraform Plan
-        env:
+      env:
         ARM_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
         ARM_CLIENT_SECRET: ${{ secrets.AZURE_CLIENT_SECRET }}
         ARM_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
