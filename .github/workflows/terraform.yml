@@ -63,6 +63,14 @@ jobs:
     - name: Generate provider configuration
       run: |
        cat > /home/runner/work/terraform1/terraform1/terraform/provider.tf <<EOF
+       terraform {
+       required_providers {
+       azurerm = {
+       source = "hashicorp/azurerm"
+       version = "4.6.0"
+          }
+        }
+       }
        provider "azurerm" {
             client_id = "${{ secrets.AZURE_CLIENT_ID }}"
             client_secret = "${{ secrets.AZURE_CLIENT_SECRET }}"
