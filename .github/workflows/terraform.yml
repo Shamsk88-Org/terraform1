@@ -68,7 +68,7 @@ jobs:
             resource_group_name = "${{ secrets.AZURE_RESOURCE_GROUP }}"
             storage_account_name = "${{ secrets.AZURE_STORAGE_ACCOUNT_NAME }}"
             container_name = "${{ secrets.AZURE_CONTAINER_NAME }}"
-            key = "${{ secrets.AZURE_AZURE_KEY }}".tfstate
+            key = "${{ secrets.AZURE_AZURE_KEY }}.tfstate"
          } 
        } 
        EOF
