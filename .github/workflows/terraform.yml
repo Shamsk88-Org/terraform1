@@ -63,8 +63,7 @@ jobs:
     - name: Generate provider configuration
       run: |
        cat > /home/runner/work/terraform1/terraform1/terraform/provider.tf <<EOF
-       terraform {
-         provider "azurerm" {
+       provider "azurerm" {
             client_id = ${{ secrets.AZURE_CLIENT_ID }}
             client_secret = ${{ secrets.AZURE_CLIENT_SECRET }}
             tenant_id = ${{ secrets.AZURE_TENANT_ID }}
