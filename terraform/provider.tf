@@ -1,3 +1,4 @@
+### Provider block ###
 terraform {
   required_providers {
     azurerm = {
